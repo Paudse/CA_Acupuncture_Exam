@@ -1,8 +1,8 @@
 
 folder = "./CA_Acupuncture_Exam_Sheet/"
 # file = "模擬試題_加州600题_1-25"
-file = "模擬試題_加州600题_26-50"
-# file = "模擬試題_加州600题"
+# file = "模擬試題_加州600题_26-50"
+file = "模擬試題_加州600题"
 
 ###
 foler_file_name = folder + file + ".txt"
@@ -110,11 +110,11 @@ def test(foler_file_name):
 			score_100 = round(((len(q)-wrong)/len(q))*100,0)
 			if score_100 >= 70:
 				print(colored('Your score: '+ str(score_100) + '   YOU PASS!!!', 'green'))
-				print(colored('Number of questions failed: '+ str(wrong), 'green'))
+				print(colored('Number of questions failed: -'+ str(wrong)+'/'+ str(len(q)), 'green'))
 			else:
 				# print(colored('Your score: '+ str(score)+ '/'+ str(len(q)), 'red'))
 				print(colored('Your score: '+ str(score_100) + '   NOT PASS...', 'red'))
-				print(colored('Number of questions failed: '+ str(wrong), 'red'))
+				print(colored('Number of questions failed: -'+ str(wrong)+'/'+ str(len(q)), 'red'))
 			print(colored("test finished", 'cyan'))
 			time_end = time.time()
 			print('time cost: ', round(time_end-time_start, 3), 's')
@@ -123,7 +123,7 @@ def test(foler_file_name):
 			with open('./score_record/score_' + file + ".txt", "a", encoding='utf-8') as f:
 				now = datetime.now()
 				dt_string = now.strftime("%Y/%m/%d %H:%M:%S")
-				score_message = file+'   '+dt_string+'   '+str(score_100)+'   -'+str(wrong)+'   '+str(round(time_end-time_start, 3))+'\n'
+				score_message = file+'   '+dt_string+'   '+str(score_100)+'   -'+str(wrong)+'/'+ str(len(q))+'   '+str(round(time_end-time_start, 3))+'\n'
 				f.write(score_message)
 
 
