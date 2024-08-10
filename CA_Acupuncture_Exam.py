@@ -2,7 +2,8 @@
 folder = "./CA_Acupuncture_Exam_Sheet/"
 # file = "模擬試題_加州600题_1-25"
 # file = "模擬試題_加州600题_26-50"
-file = "模擬試題_加州600题"
+file = "模擬試題_加州600题_51-75"
+# file = "模擬試題_加州600题"
 
 ###
 foler_file_name = folder + file + ".txt"
