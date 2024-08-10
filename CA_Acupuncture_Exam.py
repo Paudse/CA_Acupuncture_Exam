@@ -1,6 +1,7 @@
 
 folder = "./CA_Acupuncture_Exam_Sheet/"
 file = "模擬試題_加州600题_1-25"
+# file = "模擬試題_加州600题"
 
 ###
 foler_file_name = folder + file + ".txt"
@@ -55,6 +56,8 @@ def test(foler_file_name):
 	not_finished = 1
 	k = 0
 	score = 0
+	wrong = 0
+	answer_once = 0
 
 	while not_finished:
 		print('<', k+1 , '/', len(q) , '>')
@@ -78,9 +81,13 @@ def test(foler_file_name):
 			print(colored('Correct!', 'green'))
 			score = score + 1
 			k = k + 1
+			answer_once = 0
 		else:
 			print(colored('Wrong. Try again.', 'red'))
 			score = score - 1
+			if answer_once == 0:
+				wrong = wrong + 1
+				answer_once = 1
 			if not os.path.exists('./fault_record'):
 				os.makedirs('./fault_record')
 			with open('./fault_record/fault_' + file + ".txt", "a", encoding='utf-8') as f:
@@ -99,10 +106,13 @@ def test(foler_file_name):
 		print('--------------------------------------')
 		if k == len(q):
 			not_finished = 0
+			score_100 = round(((len(q)-wrong)/len(q))*100,0)
 			if score == len(q):
-				print(colored('Your score: '+ str(score)+ '/'+ str(len(q)) + '   GREAT!!!', 'green'))
+				print(colored('Your score: '+ str(score_100) + '   GREAT!!!', 'green'))
 			else:
-				print(colored('Your score: '+ str(score)+ '/'+ str(len(q)), 'red'))
+				# print(colored('Your score: '+ str(score)+ '/'+ str(len(q)), 'red'))
+				print(colored('Your score: '+ str(score_100), 'red'))
+				print(colored('Number of questions failed: '+ str(wrong), 'red'))
 			print(colored("test finished", 'cyan'))
 			time_end = time.time()
 			print('time cost: ', round(time_end-time_start, 3), 's')
@@ -111,7 +121,7 @@ def test(foler_file_name):
 			with open('./score_record/score_' + file + ".txt", "a", encoding='utf-8') as f:
 				now = datetime.now()
 				dt_string = now.strftime("%Y/%m/%d %H:%M:%S")
-				score_message = file+'   '+dt_string+'   '+str(score)+'/'+str(len(q))+'   '+str(round(time_end-time_start, 3))+'\n'
+				score_message = file+'   '+dt_string+'   '+str(score_100)+'   -'+str(wrong)+'   '+str(round(time_end-time_start, 3))+'\n'
 				f.write(score_message)
 
 
