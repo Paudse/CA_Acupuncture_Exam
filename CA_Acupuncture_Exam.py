@@ -1,6 +1,7 @@
 
 folder = "./CA_Acupuncture_Exam_Sheet/"
-file = "模擬試題_加州600题_1-25"
+# file = "模擬試題_加州600题_1-25"
+file = "模擬試題_加州600题_26-50"
 # file = "模擬試題_加州600题"
 
 ###
@@ -107,11 +108,12 @@ def test(foler_file_name):
 		if k == len(q):
 			not_finished = 0
 			score_100 = round(((len(q)-wrong)/len(q))*100,0)
-			if score == len(q):
-				print(colored('Your score: '+ str(score_100) + '   GREAT!!!', 'green'))
+			if score_100 >= 70:
+				print(colored('Your score: '+ str(score_100) + '   YOU PASS!!!', 'green'))
+				print(colored('Number of questions failed: '+ str(wrong), 'green'))
 			else:
 				# print(colored('Your score: '+ str(score)+ '/'+ str(len(q)), 'red'))
-				print(colored('Your score: '+ str(score_100), 'red'))
+				print(colored('Your score: '+ str(score_100) + '   NOT PASS...', 'red'))
 				print(colored('Number of questions failed: '+ str(wrong), 'red'))
 			print(colored("test finished", 'cyan'))
 			time_end = time.time()
