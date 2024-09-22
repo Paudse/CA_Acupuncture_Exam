@@ -36,17 +36,17 @@ def test(foler_file_name):
 	for i in range (0,len(data)):
 		# print(i%3)
 		# print(data[i])
-		if i%6 == 0:
+		if i%7 == 0:
 			q.append(data[i].replace('\n', ''))
-		if i%6 == 1:
+		if i%7 == 1:
 			s1.append(data[i].replace('\n', ''))
-		if i%6 == 2:
+		if i%7 == 2:
 			s2.append(data[i].replace('\n', ''))
-		if i%6 == 3:
+		if i%7 == 3:
 			s3.append(data[i].replace('\n', ''))
-		if i%6 == 4:
+		if i%7 == 4:
 			s4.append(data[i].replace('\n', ''))
-		if i%6 == 5:
+		if i%7 == 5:
 			a.append(data[i].replace('\n', ''))
 
 	# for j in range (0,len(de)):
@@ -74,10 +74,10 @@ def test(foler_file_name):
 		# 	ans[m] = ch[random.choice(r)]
 
 		print(colored(q[k], 'yellow', attrs=['bold']))
-		print('(1)', s1[k])
-		print('(2)', s2[k])
-		print('(3)', s3[k])
-		print('(4)', s4[k])
+		print('', s1[k])
+		print('', s2[k])
+		print('', s3[k])
+		print('', s4[k])
 
 		input_ans = input('Your answer: ')
 
