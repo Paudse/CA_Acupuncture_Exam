@@ -112,7 +112,7 @@ def test(foler_file_name):
 		if k == len(q):
 			not_finished = 0
 			score_100 = round(((len(q)-wrong)/len(q))*100,0)
-			if score_100 >= 70:
+			if score_100 >= 80:
 				print(colored('Your score: '+ str(score_100) + '   YOU PASS!!!', 'green'))
 				print(colored('Number of questions failed: -'+ str(wrong)+'/'+ str(len(q)), 'green'))
 			else:
