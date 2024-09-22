@@ -1,10 +1,12 @@
 
-folder = "./CA_Acupuncture_Exam_Sheet/"
+# folder = "./CA_Acupuncture_Exam_Sheet/"
 # file = "模擬試題_加州600题_1-25"
 # file = "模擬試題_加州600题_26-50"
-file = "模擬試題_加州600题_51-75"
+# file = "模擬試題_加州600题_51-75"
 # file = "模擬試題_加州600题"
 
+folder = "./講義/"
+file = "Q&A-1 中醫基礎 p01"
 ###
 foler_file_name = folder + file + ".txt"
 
@@ -129,7 +131,9 @@ def test(foler_file_name):
 
 
 if __name__ == '__main__':
-	test(foler_file_name)
+	while True:
+		test(foler_file_name)
+		testing = input('Press any key to test again.')
 
 
 
