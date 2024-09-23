@@ -99,13 +99,18 @@ def index():
 def mainpage():
     selected_test_area = request.form.getlist('test_area')
     print(selected_test_area)
-    session['questions'] = import_question(selected_test_area[0])
+    session['selected_test_area'] = selected_test_area[0]
+    session['questions'] = import_question(session['selected_test_area'])
     # return f"您选择的题目 ID: {', '.join(selected_test_area)}"
     return redirect(url_for('question'))
 
 @app.route('/back_to_main', methods=['POST'])
 def back_to_main():
     session['questions'] = []
+    session['current_question'] = 0
+    session['score'] = 0
+    session['answered_questions'] = []  # Keep track of answered questions
+    session['incorrect_questions'] = []
     return render_template('mainpage.html', test_areas=test_areas)
 
 @app.route('/question', methods=['GET', 'POST'])
@@ -140,6 +145,7 @@ def question():
     if current_question < len(questions):
         return render_template(
             'question.html',
+            selected_test_area=session['selected_test_area'],
             question=questions[current_question],
             question_index=current_question + 1,
             total_questions=len(questions),
@@ -166,6 +172,7 @@ def previous_question():
 @app.route('/result')
 def result():
     score = session.get('score', 0)
+    questions = session.get('questions', [])
     total_questions = len(questions)
     total_score = round((score / total_questions) * 100, 2) if total_questions > 0 else 0
     incorrect_questions = session.get('incorrect_questions', [])

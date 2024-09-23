@@ -51,7 +51,7 @@
     </style>
 </head>
 <body>
-	<h2>第 {{ question_index }} 题 / 共 {{ total_questions }} 题</h2>
+	<h2>[{{ selected_test_area }}] (第 {{ question_index }} 题 / 共 {{ total_questions }} 题)</h2>
     <h1>{{ question.question }}</h1>
     <form method="post" action="/question">
         {% for option in question.options %}
@@ -81,7 +81,9 @@
     </div>
     <form method="post" action="/back_to_main">
         <br>
-        <button class="my-button" type="submit">返回題庫選擇頁</button>
+        <br>
+        <br>
+        <button class="my-button" type="submit">返回題庫選擇</button>
     </form>
 </body>
 </html>
