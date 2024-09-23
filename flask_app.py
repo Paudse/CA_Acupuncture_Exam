@@ -5,10 +5,10 @@ app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
 # Define questions
-def import_question():
+def import_question(file):
     folder = "./講義/"
     # file = "Q&A-1 中醫基礎 p01"
-    file = "Q&A-1 中醫基礎 p02"
+    # file = "Q&A-1 中醫基礎 p02"
     # file = "Q&A-6 針灸 IIa p01"
     # file = "Q&A-7 針灸 IIIa p06"
     # file = "Q&A-9 方劑 p01"
@@ -62,7 +62,7 @@ def import_question():
         questions.append(dic)
     return questions
 
-questions = import_question()
+# questions = import_question()
 
 # questions = [
 #     {
@@ -77,18 +77,36 @@ questions = import_question()
 #     }
 # ]
 
+test_areas = [
+    {"file_name": "Q&A-1 中醫基礎 p01"},
+    {"file_name": "Q&A-1 中醫基礎 p02"},
+    {"file_name": "Q&A-6 針灸 IIa p01"},
+    {"file_name": "Q&A-7 針灸 IIIa p06"},
+    {"file_name": "Q&A-9 方劑 p01"},
+    {"file_name": ""},
+]
+
 @app.route('/')
 def index():
     session['current_question'] = 0
     session['score'] = 0
     session['answered_questions'] = []  # Keep track of answered questions
     session['incorrect_questions'] = []
+    # return redirect(url_for('question'))
+    return render_template('mainpage.html', test_areas=test_areas)
+
+@app.route('/submit', methods=['POST'])
+def mainpage():
+    selected_test_area = request.form.getlist('test_area')
+    print(selected_test_area)
+    session['questions'] = import_question(selected_test_area[0])
+    # return f"您选择的题目 ID: {', '.join(selected_test_area)}"
     return redirect(url_for('question'))
 
 @app.route('/question', methods=['GET', 'POST'])
 def question():
     current_question = session.get('current_question', 0)
-
+    questions = session.get('questions', [])
     if request.method == 'POST':
         if 'option' in request.form:
             selected_option = request.form['option']
