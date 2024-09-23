@@ -62,20 +62,20 @@ def import_question():
         questions.append(dic)
     return questions
 
-# questions = import_question()
+questions = import_question()
 
-questions = [
-    {
-        'question': '在陽性物質的基礎上所產生陰證 , 應屬於何種病證?',
-        'options': ['氣虛', '血瘀'],
-        'answer': '氣虛'
-    },
-    {
-        'question': '依據五行理論的特性 , 五臟中何者屬於陽?',
-        'options': ['肺, 腎','肝, 心'],
-        'answer': '肝, 心'
-    }
-]
+# questions = [
+#     {
+#         'question': '在陽性物質的基礎上所產生陰證 , 應屬於何種病證?',
+#         'options': ['氣虛', '血瘀'],
+#         'answer': '氣虛'
+#     },
+#     {
+#         'question': '依據五行理論的特性 , 五臟中何者屬於陽?',
+#         'options': ['肺, 腎','肝, 心'],
+#         'answer': '肝, 心'
+#     }
+# ]
 
 @app.route('/')
 def index():
