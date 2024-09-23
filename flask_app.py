@@ -95,13 +95,18 @@ def index():
     # return redirect(url_for('question'))
     return render_template('mainpage.html', test_areas=test_areas)
 
-@app.route('/submit', methods=['POST'])
+@app.route('/mainpage', methods=['POST'])
 def mainpage():
     selected_test_area = request.form.getlist('test_area')
     print(selected_test_area)
     session['questions'] = import_question(selected_test_area[0])
     # return f"您选择的题目 ID: {', '.join(selected_test_area)}"
     return redirect(url_for('question'))
+
+@app.route('/back_to_main', methods=['POST'])
+def back_to_main():
+    session['questions'] = []
+    return render_template('mainpage.html', test_areas=test_areas)
 
 @app.route('/question', methods=['GET', 'POST'])
 def question():
