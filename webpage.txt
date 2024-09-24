@@ -1,4 +1,0 @@
-https://paudse.pythonanywhere.com/question
-https://www.pythonanywhere.com/user/Paudse/webapps/#tab_id_paudse_pythonanywhere_com
-https://github.com/Paudse/CA_Acupuncture_Exam
-https://github.com/Paudse/CA_Acupuncture_Exam.git
