@@ -5,7 +5,7 @@
 # file = "模擬試題_加州600题_51-75"
 # file = "模擬試題_加州600题"
 
-folder = "./講義/"
+folder = "./Q&A/"
 # file = "Q&A-1 中醫基礎 p01"
 file = "Q&A-6 針灸 IIa p01"
 # file = "Q&A-9 方劑 p01"
