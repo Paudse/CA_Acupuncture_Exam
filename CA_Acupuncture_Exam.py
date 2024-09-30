@@ -6,9 +6,7 @@
 # file = "模擬試題_加州600题"
 
 folder = "./Q&A/"
-# file = "Q&A-1 中醫基礎 p01"
-file = "Q&A-6 針灸 IIa p01"
-# file = "Q&A-9 方劑 p01"
+file = "Q&A-1 中醫基礎 p01"
 ###
 foler_file_name = folder + file + ".txt"
 
